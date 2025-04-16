@@ -23,10 +23,10 @@
                     ?>
 
                         <div class="menu form-group">
-                            <label for="menu-<php echo $menu->term_id; ?>">
+                            <label for="menu-<?php echo $menu->term_id; ?>">
                                 <?php echo $menu->name; ?> Menu Style:
                             </label>
-                            <select id="menu-<php echo $menu->term_id; ?>" name="menu_<php echo $menu->term_id; ?>">
+                            <select id="menu-<?php echo $menu->term_id; ?>" name="menu_<?php echo $menu->term_id; ?>">
                                 <option value="">-- Select Menu Style --</option>
                                 <option value="fullscreen">Fullscreen Menu</option>
                                 <option value="mega">Mega Menu</option>
