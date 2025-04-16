@@ -1,0 +1,45 @@
+.multi-menu-admin {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px;
+    margin-left: 0;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    .header-intro {
+        margin-bottom: 30px;
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.65rem;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+
+        label {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 2px;
+            display: block;
+            margin-top: 0;
+        }
+    }
+}

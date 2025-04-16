@@ -107,7 +107,9 @@ class MultiMenu {
     public function displayMenuTypeSelection() {
         $this->checkPermissions();
 
-        echo "<h1>This loaded!</h1>";
+        $menus = wp_get_nav_menus();
+
+        require_once(plugin_dir_path(__FILE__) . "/views/admin-menu-style-selection.php");
     }
 
 }
