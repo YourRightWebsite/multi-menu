@@ -18,6 +18,7 @@ class MultiMenu {
         add_action('admin_enqueue_scripts', [$this, 'loadScriptsAndStyles']);
         add_action('admin_init', [$this, 'renderMenuCustomMetaBox']);
         add_action('wp_ajax_save_custom_menu_setting', [$this, 'saveCustomMenuSettings']);
+        add_filter('wp_nav_menu_args', [$this, 'assignMenuNavWalkers'], 1);
     }
 
     /*
@@ -126,7 +127,7 @@ class MultiMenu {
         require_once(plugin_dir_path(__FILE__) . "/views/admin-menu-custom-settings-metabox.php");
     }
 
-    function saveCustomMenuSettings() {
+    public function saveCustomMenuSettings() {
 
         if (!isset($_POST['nonce']) || !check_ajax_referer('custom_menu_setting_ajax_nonce', 'nonce', false)) {
             wp_send_json_error('Invalid or missing nonce.', 403);
@@ -160,6 +161,129 @@ class MultiMenu {
         $status_css     = update_term_meta($menu_id, 'multimenu_menu_css', $multi_menu_css);
     
         wp_send_json_success('Setting saved successfully.');
+    }
+
+    public function assignMenuNavWalkers($args) {
+
+        if(isset($args['theme_location']) && $args['theme_location'] != "") {
+
+            $current_menu_theme_location = $args['theme_location'];
+        
+            $menu_locations = get_nav_menu_locations();     // Information about where each menu is located in the template
+
+            if(isset($menu_locations[$current_menu_theme_location]) && is_numeric($menu_locations[$current_menu_theme_location])) {
+                $menu_id = $menu_locations[$current_menu_theme_location];
+
+                $multimenu_menu_style = get_term_meta($menu_id, 'multimenu_menu_style', true);
+                $multimenu_menu_css = get_term_meta($menu_id, 'multimenu_menu_css', true);
+
+                if($multimenu_menu_style != false && $multimenu_menu_style != "") {
+
+                    if($multimenu_menu_style == "fullscreen") {
+
+                        require_once(plugin_dir_path(__FILE__) . "/fullscreen-menu/FullscreenMenuNavWalker.php");
+
+                        $args['walker'] = new FullscreenMenuNavWalker();
+
+                        // Load the appropriate CSS for this menu
+
+                        if($multimenu_menu_css != "") {
+
+                            // If there's a value, we're always loading the core styles
+                            wp_enqueue_style('multi-menu-fullscreen-core', plugin_dir_url(__FILE__) . 'fullscreen-menu/css/fullscreen-core.css', [], null);
+
+                            if($multimenu_menu_css == "light") {
+                                wp_enqueue_style('multi-menu-fullscreen-light', plugin_dir_url(__FILE__) . 'fullscreen-menu/css/fullscreen-light.css', [], null);
+                            }
+                            elseif($multimenu_menu_css == "dark") {
+                                wp_enqueue_style('multi-menu-fullscreen-dark', plugin_dir_url(__FILE__) . 'fullscreen-menu/css/fullscreen-dark.css', [], null);
+                            }
+
+                        }
+
+                        // Load the appropriate JS for this menu
+
+                        wp_enqueue_script(
+                            'multi-menu-fullscreen-js',
+                            plugin_dir_url(__FILE__) . 'fullscreen-menu/js/fullscreen-menu.js',
+                            array('jquery'),
+                            '1.0',
+                            true
+                        );
+
+                    }
+                    elseif($multimenu_menu_style == "mega") {
+
+                        require_once(plugin_dir_path(__FILE__) . "/mega-menu/MegaMenuNavWalker.php");
+
+                        $args['walker'] = new MegaMenuNavWalker();
+
+                        // Load the appropriate CSS for this menu
+
+                        if($multimenu_menu_css != "") {
+
+                            // If there's a value, we're always loading the core styles
+                            wp_enqueue_style('multi-menu-mega-core', plugin_dir_url(__FILE__) . 'mega/css/mega-core.css', [], null);
+
+                            if($multimenu_menu_css == "light") {
+                                wp_enqueue_style('multi-menu-mega-light', plugin_dir_url(__FILE__) . 'mega-menu/css/mega-light.css', [], null);
+                            }
+                            elseif($multimenu_menu_css == "dark") {
+                                wp_enqueue_style('multi-menu-mega-dark', plugin_dir_url(__FILE__) . 'mega-menu/css/mega-dark.css', [], null);
+                            }
+
+                        }
+
+                        // Load the appropriate JS for this menu
+
+                        wp_enqueue_script(
+                            'multi-menu-mega-js',
+                            plugin_dir_url(__FILE__) . 'mega-menu/js/mega-menu.js',
+                            array('jquery'),
+                            '1.0',
+                            true
+                        );
+
+                    }
+                    elseif($multimenu_menu_style == "slideout") {
+
+                        require_once(plugin_dir_path(__FILE__) . "/slideout-menu/SlideoutMenuNavWalker.php");
+
+                        $args['walker'] = new SlideoutMenuNavWalker();
+
+                        // Load the appropriate CSS for this menu
+
+                        if($multimenu_menu_css != "") {
+
+                            // If there's a value, we're always loading the core styles
+                            wp_enqueue_style('multi-menu-slideout-core', plugin_dir_url(__FILE__) . 'slideout-menu/css/slideout-core.css', [], null);
+
+                            if($multimenu_menu_css == "light") {
+                                wp_enqueue_style('multi-menu-slideout-light', plugin_dir_url(__FILE__) . 'slideout-menu/css/slideout-light.css', [], null);
+                            }
+                            elseif($multimenu_menu_css == "dark") {
+                                wp_enqueue_style('multi-menu-slideout-dark', plugin_dir_url(__FILE__) . 'slideout-menu/css/slideout-dark.css', [], null);
+                            }
+
+                        }
+
+                        // Load the appropriate JS for this menu
+
+                        wp_enqueue_script(
+                            'multi-menu-slideout-js',
+                            plugin_dir_url(__FILE__) . 'slideout-menu/js/slideout-menu.js',
+                            array('jquery'),
+                            '1.0',
+                            true
+                        );
+
+                    }
+                }
+            }
+        }
+
+        return $args;
+
     }
 
 }
