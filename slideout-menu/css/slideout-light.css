@@ -1,0 +1,23 @@
+.multi-menu-slideout {
+    button {
+        color: #000;
+    }
+
+    .menu-slideout-container {
+        background-color: #fff;
+        border-color: #f2f2f2;
+    }
+
+    .menu-item {
+        .menu-clickable {
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 1rem;
+            line-height: 1.5;
+
+            .arrow-toggle {
+                filter: brightness(0) saturate(100%) invert(0%) sepia(52%) saturate(3636%) hue-rotate(104deg) brightness(98%) contrast(106%);
+            }
+        }
+    }
+}

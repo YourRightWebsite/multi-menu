@@ -33,7 +33,7 @@
     }
 
     .form-group {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
 
         &:last-child {
             margin-bottom: 0;
@@ -50,6 +50,14 @@
             width: 100%;
             max-width: 100%;
             display: block;
+        }
+
+        &.checkbox-container {
+            label {
+                display: inline-block;
+                margin-left: 2px;
+                cursor: pointer;
+            }
         }
     }
 

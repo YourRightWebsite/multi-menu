@@ -121,8 +121,11 @@ class MultiMenu {
         }
 
         // Retrieve existing custom settings (if any)
-        $multi_menu_style   = get_term_meta($menu_id, 'multimenu_menu_style', true);
-        $multi_menu_css     = get_term_meta($menu_id, 'multimenu_menu_css', true);
+        $multi_menu_style                   = get_term_meta($menu_id, 'multimenu_menu_style', true);
+        $multi_menu_css                     = get_term_meta($menu_id, 'multimenu_menu_css', true);
+        $multi_menu_invert_toggle_color     = get_term_meta($menu_id, 'multimenu_invert_toggle_color', true);
+        $multi_menu_show_labels             = get_term_meta($menu_id, 'multimenu_show_labels', true);
+        $multi_menu_preserve_classes        = get_term_meta($menu_id, 'multimenu_preserve_classes', true);
 
         require_once(plugin_dir_path(__FILE__) . "/views/admin-menu-custom-settings-metabox.php");
     }
@@ -147,18 +150,34 @@ class MultiMenu {
 
         // Handle fetch request.
         if ( isset($_POST['fetch_only']) && $_POST['fetch_only'] ) {
-            $fetch_multimenu_menu_style = get_term_meta($menu_id, 'multimenu_menu_style', true);
-            $fetch_multimenu_menu_css = get_term_meta($menu_id, 'multimenu_menu_css', true);
-            wp_send_json_success(array('styleSetting' => $fetch_multimenu_menu_style, 'cssSetting' => $fetch_multimenu_menu_css));
+            $fetch_multimenu_menu_style                 = get_term_meta($menu_id, 'multimenu_menu_style', true);
+            $fetch_multimenu_menu_css                   = get_term_meta($menu_id, 'multimenu_menu_css', true);
+            $fetch_multimenu_invert_toggle_color        = get_term_meta($menu_id, 'multimenu_invert_toggle_color', true);
+            $fetch_multimenu_show_labels                = get_term_meta($menu_id, 'multimenu_show_labels', true);
+            $fetch_multimenu_preserve_classes           = get_term_meta($menu_id, 'multimenu_preserve_classes', true);
+
+            wp_send_json_success(array(
+                'styleSetting'              => $fetch_multimenu_menu_style, 
+                'cssSetting'                => $fetch_multimenu_menu_css,
+                'toggleColorSetting'        => $fetch_multimenu_invert_toggle_color,
+                'showLabelsSetting'         => $fetch_multimenu_show_labels,
+                'preserveClassesSetting'    => $fetch_multimenu_preserve_classes,
+            ));
         }
 
         // Get the term meta data
-        $multi_menu_style   = isset($_POST['menu_style']) ? sanitize_text_field($_POST['menu_style']) : '';
-        $multi_menu_css     = isset($_POST['menu_css']) ? sanitize_text_field($_POST['menu_css']) : '';
+        $multi_menu_style                   = isset($_POST['menu_style']) ? sanitize_text_field($_POST['menu_style']) : '';
+        $multi_menu_css                     = isset($_POST['menu_css']) ? sanitize_text_field($_POST['menu_css']) : '';
+        $multi_menu_toggle_color            = isset($_POST['menu_invert_toggle_color']) ? sanitize_text_field($_POST['menu_invert_toggle_color']) : '';
+        $multi_menu_show_labels             = isset($_POST['menu_show_labels']) ? sanitize_text_field($_POST['menu_show_labels']) : '';
+        $multi_menu_preserve_classes        = isset($_POST['menu_preserve_classes']) ? sanitize_text_field($_POST['menu_preserve_classes']) : '';
     
         // Save the term meta.
-        $status_style   = update_term_meta($menu_id, 'multimenu_menu_style', $multi_menu_style);
-        $status_css     = update_term_meta($menu_id, 'multimenu_menu_css', $multi_menu_css);
+        update_term_meta($menu_id, 'multimenu_menu_style', $multi_menu_style);
+        update_term_meta($menu_id, 'multimenu_menu_css', $multi_menu_css);
+        update_term_meta($menu_id, 'multimenu_invert_toggle_color', $multi_menu_toggle_color );
+        update_term_meta($menu_id, 'multimenu_show_labels', $multi_menu_show_labels);
+        update_term_meta($menu_id, 'multimenu_preserve_classes', $multi_menu_preserve_classes);
     
         wp_send_json_success('Setting saved successfully.');
     }
@@ -174,10 +193,23 @@ class MultiMenu {
             if(isset($menu_locations[$current_menu_theme_location]) && is_numeric($menu_locations[$current_menu_theme_location])) {
                 $menu_id = $menu_locations[$current_menu_theme_location];
 
-                $multimenu_menu_style = get_term_meta($menu_id, 'multimenu_menu_style', true);
-                $multimenu_menu_css = get_term_meta($menu_id, 'multimenu_menu_css', true);
+                $multimenu_menu_style               = get_term_meta($menu_id, 'multimenu_menu_style', true);
+                $multimenu_menu_css                 = get_term_meta($menu_id, 'multimenu_menu_css', true);
+                $multi_menu_invert_toggle_color     = get_term_meta($menu_id, 'multimenu_invert_toggle_color', true);
+                $multi_menu_show_labels             = get_term_meta($menu_id, 'multimenu_show_labels', true);
+                $multi_menu_preserve_classes        = get_term_meta($menu_id, 'multimenu_preserve_classes', true);
 
                 if($multimenu_menu_style != false && $multimenu_menu_style != "") {
+
+                    $menu_params = [];  // Any optional parameters we want to pass to our nav walker
+                    $menu_params["invert_toggle"] = boolval($multi_menu_invert_toggle_color);
+                    $menu_params["show_labels"] = boolval($multi_menu_show_labels);
+                    $menu_params["id"] = $menu_id;
+
+                    if($multi_menu_preserve_classes != true) {
+                        $args["menu_class"]     = "";
+                        $args["menu_id"]        = "multi-menu-wrapper-" . $menu_id;
+                    }
 
                     if($multimenu_menu_style == "fullscreen") {
 
@@ -249,7 +281,7 @@ class MultiMenu {
 
                         require_once(plugin_dir_path(__FILE__) . "/slideout-menu/SlideoutMenuNavWalker.php");
 
-                        $args['walker'] = new SlideoutMenuNavWalker();
+                        $args['walker'] = new SlideoutMenuNavWalker($multimenu_menu_css, $menu_params);
 
                         // Load the appropriate CSS for this menu
 

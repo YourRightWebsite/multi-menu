@@ -36,6 +36,21 @@
                     <option value="dark"<?php if(isset($multi_menu_css) && $multi_menu_css == "dark"){ echo ' selected="selected"'; } ?>><?php _e('Core + Dark'); ?></option>
                 </select>
             </div>
+
+            <div class="form-group menu-scheme checkbox-container">
+                <input type="checkbox" value="1" name="menu_invert_toggle_color" id="menu_invert_toggle_color"<?php echo (isset($multi_menu_invert_toggle_color) && boolval($multi_menu_invert_toggle_color) === true ? ' checked="checked"' : ''); ?>/>
+                <label for="menu_invert_toggle_color"><?php _e('Invert Menu Toggle Color'); ?></label>
+            </div>
+
+            <div class="form-group menu-scheme checkbox-container">
+                <input type="checkbox" value="1" name="menu_show_labels" id="menu_show_labels"<?php echo (isset($multi_menu_show_labels) && boolval($multi_menu_show_labels) === true ? ' checked="checked"' : ''); ?>/>
+                <label for="menu_show_labels"><?php _e('Show Menu and Close Labels'); ?></label>
+            </div>
+
+            <div class="form-group menu-scheme checkbox-container">
+                <input type="checkbox" value="1" name="menu_preserve_classes" id="menu_preserve_classes"<?php echo (isset($multi_menu_preserve_classes) && boolval($multi_menu_preserve_classes) === true ? ' checked="checked"' : ''); ?>/>
+                <label for="menu_preserve_classes"><?php _e('Preserve Menu ID and Class'); ?></label>
+            </div>
         </div>
 
     </fieldset>
