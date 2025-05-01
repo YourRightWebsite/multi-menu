@@ -207,6 +207,14 @@ class MultiMenu {
                         $args["menu_id"]        = "multi-menu-wrapper-" . $menu_id;
                     }
 
+                    $current_theme = wp_get_theme();
+                    $current_theme_name = "";
+
+                    if(isset($current_theme->template) && $current_theme->template != "") {
+                        $current_theme_name = $current_theme->template;
+                    }
+                    
+
                     if($multimenu_menu_style == "fullscreen") {
 
                         require_once(plugin_dir_path(__FILE__) . "/fullscreen-menu/FullscreenMenuNavWalker.php");
@@ -291,6 +299,27 @@ class MultiMenu {
                             }
                             elseif($multimenu_menu_css == "dark") {
                                 wp_enqueue_style('multi-menu-slideout-dark', plugin_dir_url(__FILE__) . 'slideout-menu/css/slideout-dark.css', [], null);
+                            }
+
+                        }
+
+                        if(boolval($multi_menu_load_theme_specific_css) === true && preg_match('/^[a-zA-Z0-9_-]+$/', $current_theme_name)) {
+
+                            // Check if we have any theme specific CSS to load
+                            
+                            /*
+                                Common popular theme names include:
+                                astra
+                                blocksy
+                                generatepress
+                                kadence
+                                neve
+                            */
+
+                            $filepath = 'slideout-menu/css/theme-overrides/'. basename($current_theme_name) . '.css';
+
+                            if(file_exists(plugin_dir_path(__FILE__) . $filepath)) {
+                                wp_enqueue_style('multi-menu-overrides-' . $current_theme_name, plugin_dir_url(__FILE__) . $filepath, [], null);
                             }
 
                         }
