@@ -14,10 +14,49 @@
             text-decoration: underline;
             font-size: 1rem;
             line-height: 1.5;
+            color: #282828;
+
+            &:hover,
+            &:active,
+            &:visited {
+                color: #282828;
+            }
 
             .arrow-toggle {
-                filter: brightness(0) saturate(100%) invert(0%) sepia(52%) saturate(3636%) hue-rotate(104deg) brightness(98%) contrast(106%);
+                filter: brightness(0) saturate(100%) invert(11%) sepia(3%) saturate(13%) hue-rotate(314deg) brightness(97%) contrast(88%);
             }
+        }
+    }
+
+    .menu-toggle-container {
+        .button-text {
+            color: #282828;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(11%) sepia(3%) saturate(13%) hue-rotate(314deg) brightness(97%) contrast(88%);
+        }
+    }
+
+    .menu-slideout-container-close-container {
+        .button-text {
+            color: #000;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(11%) sepia(3%) saturate(13%) hue-rotate(314deg) brightness(97%) contrast(88%);
+        }
+    }
+}
+
+.multi-menu-slideout.invert {
+    .menu-toggle-container {
+        .button-text {
+            color: #fff;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
         }
     }
 }

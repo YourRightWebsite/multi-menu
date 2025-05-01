@@ -12,6 +12,7 @@ jQuery(document).ready(function($) {
         var menuId = $('#custom_menu_id').val();
         var styleSetting = $('#menu_style').val();
         var cssSetting = $('#menu_css').val();
+        var additionalClasses = $('#menu_additional_classes').val();
         var nonce = customMenuSettings.nonce;
         var button = $('#custom-menu-setting-save');
 
@@ -34,6 +35,12 @@ jQuery(document).ready(function($) {
             preserveClasses = 1;
         }
 
+        var themeOverrideCSS = 0;
+
+        if($('#menu_load_theme_specific_css').is(':checked')) {
+            themeOverrideCSS = 1;
+        }
+
         button.html('Loading...').attr('disabled', 'disabled');
 
         $('js-multi-alert').hide();
@@ -50,6 +57,8 @@ jQuery(document).ready(function($) {
                 menu_invert_toggle_color: invertToggle,
                 menu_show_labels: showLabels,
                 menu_preserve_classes: preserveClasses,
+                menu_load_theme_specific_css: themeOverrideCSS,
+                menu_additional_classes: additionalClasses,
             },
             success: function(response) {
                 if (response.success) {

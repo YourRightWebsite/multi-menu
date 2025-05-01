@@ -1,0 +1,62 @@
+.multi-menu-slideout {
+    button {
+        color: #fff;
+    }
+
+    .menu-slideout-container {
+        background-color: #000000;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-item {
+        .menu-clickable {
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #fff;
+
+            &:hover,
+            &:active,
+            &:visited {
+                color: #fff;
+            }
+
+            .arrow-toggle {
+                filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
+            }
+        }
+    }
+
+    .menu-toggle-container {
+        .button-text {
+            color: #fff;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
+        }
+    }
+
+    .menu-slideout-container-close-container {
+        .button-text {
+            color: #fff;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
+        }
+    }
+}
+
+.multi-menu-slideout.invert {
+    .menu-toggle-container {
+        .button-text {
+            color: #282828;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(11%) sepia(3%) saturate(13%) hue-rotate(314deg) brightness(97%) contrast(88%);
+        }
+    }
+}

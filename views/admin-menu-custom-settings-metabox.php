@@ -51,6 +51,19 @@
                 <input type="checkbox" value="1" name="menu_preserve_classes" id="menu_preserve_classes"<?php echo (isset($multi_menu_preserve_classes) && boolval($multi_menu_preserve_classes) === true ? ' checked="checked"' : ''); ?>/>
                 <label for="menu_preserve_classes"><?php _e('Preserve Menu ID and Class'); ?></label>
             </div>
+
+            <div class="form-group menu-scheme checkbox-container">
+                <input type="checkbox" value="1" name="menu_load_theme_specific_css" id="menu_load_theme_specific_css"<?php echo (isset($multi_menu_load_theme_specific_css) && boolval($multi_menu_load_theme_specific_css) === true ? ' checked="checked"' : ''); ?>/>
+                <label for="menu_load_theme_specific_css"><?php _e('Load Theme Specific CSS'); ?></label>
+            </div>
+            <p class="description">
+                <?php _e('The above setting will load specific CSS overrides for popular themes designed to make the menu work properly with those themes.'); ?>
+            </p>
+
+            <div class="form-group menu-scheme input-container">
+                <label for="menu_additional_classes">Additional CSS classes for menu:</label>
+                <input type="text" name="menu_additional_classes" id="menu_additional_classes" value="<?php echo (isset($multi_menu_additional_classes) && $multi_menu_additional_classes != "" ? esc_html($multi_menu_additional_classes) : ''); ?>" />
+            </div>
         </div>
 
     </fieldset>

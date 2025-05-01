@@ -20,6 +20,8 @@
         width: 350px;
         border-left: 1px solid transparent;
         transition: right 0.5s ease-in-out;
+        height: 100dvh;
+        overflow: scroll;
 
         &.open {
             right: 0;
@@ -173,6 +175,19 @@
                         pointer-events: none;
                     }
                 }
+            }
+        }
+    }
+}
+
+.multi-menu-slideout.full-width-mobile {
+    .menu-slideout-container {
+        @media (max-width: 600px) {
+            width: 100%;
+            right: -100%;
+
+            &.open {
+                right: 0;
             }
         }
     }

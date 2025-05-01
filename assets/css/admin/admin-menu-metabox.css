@@ -59,6 +59,12 @@
                 cursor: pointer;
             }
         }
+
+        &.input-container {
+            input {
+                width: 100%;
+            }
+        }
     }
 
     .save-button-container {

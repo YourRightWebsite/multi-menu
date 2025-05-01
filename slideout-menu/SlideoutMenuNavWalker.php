@@ -71,7 +71,7 @@ class SlideoutMenuNavWalker extends \Walker_Nav_Menu {
             }
 
             $output .= "
-                <li class='multi-menu js-multi-menu-slideout multi-menu-slideout ". $this->css_classes ." multi-menu-slideout-" . $this->params['id'] . " " . $menu_invert_class . "'>
+                <li class='multi-menu js-multi-menu-slideout multi-menu-slideout ". $this->css_classes . " " . $this->params['additional_classes'] ." multi-menu-slideout-" . $this->params['id'] . " " . $menu_invert_class . "'>
 
                     <div class='menu-toggle-container'>
                         <button class='js-multi-menu-slideout-toggle-open'>
