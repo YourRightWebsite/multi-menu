@@ -1,0 +1,89 @@
+.multi-menu-fullscreen {
+    button {
+        color: #fff;
+    }
+
+    .menu-fullscreen-container {
+        background-color: #000000;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-item {
+        .menu-clickable {
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #fff;
+            position: relative;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+
+            &:hover,
+            &:active,
+            &:visited {
+                color: #fff;
+            }
+
+            @media (min-width: 600px) {
+
+                span {
+                    background-image: linear-gradient(#fff, #fff);
+                    background-position: 0% 100%;
+                    background-repeat: no-repeat;
+                    background-size: 0% 2px;
+                    transition: background-size .5s;
+                }
+
+                &:hover,
+                &:focus-visible,
+                &:focus-within {
+                    span {
+                        background-size: 100% 2px;
+                    }
+                }
+            }
+
+            .arrow-toggle {
+                filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
+            }
+        }
+    }
+
+    .menu-item-description {
+        color: #ffffff;
+    }
+
+    .menu-toggle-container {
+        .button-text {
+            color: #fff;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
+        }
+    }
+
+    .menu-fullscreen-container-close-container {
+        .button-text {
+            color: #fff;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(98%) sepia(98%) saturate(9%) hue-rotate(167deg) brightness(104%) contrast(104%);
+        }
+    }
+}
+
+.multi-menu-fullscreen.invert {
+    .menu-toggle-container {
+        .button-text {
+            color: #282828;
+        }
+
+        .button-icon {
+            filter: brightness(0) saturate(100%) invert(11%) sepia(3%) saturate(13%) hue-rotate(314deg) brightness(97%) contrast(88%);
+        }
+    }
+}

@@ -219,7 +219,7 @@ class MultiMenu {
 
                         require_once(plugin_dir_path(__FILE__) . "/fullscreen-menu/FullscreenMenuNavWalker.php");
 
-                        $args['walker'] = new FullscreenMenuNavWalker();
+                        $args['walker'] = new FullscreenMenuNavWalker($multimenu_menu_css, $menu_params);
 
                         // Load the appropriate CSS for this menu
 
@@ -233,6 +233,27 @@ class MultiMenu {
                             }
                             elseif($multimenu_menu_css == "dark") {
                                 wp_enqueue_style('multi-menu-fullscreen-dark', plugin_dir_url(__FILE__) . 'fullscreen-menu/css/fullscreen-dark.css', [], null);
+                            }
+
+                        }
+
+                        if(boolval($multi_menu_load_theme_specific_css) === true && preg_match('/^[a-zA-Z0-9_-]+$/', $current_theme_name)) {
+
+                            // Check if we have any theme specific CSS to load
+                            
+                            /*
+                                Common popular theme names include:
+                                astra
+                                blocksy
+                                generatepress
+                                kadence
+                                neve
+                            */
+
+                            $filepath = 'fullscreen-menu/css/theme-overrides/'. basename($current_theme_name) . '.css';
+
+                            if(file_exists(plugin_dir_path(__FILE__) . $filepath)) {
+                                wp_enqueue_style('multi-menu-overrides-' . $current_theme_name, plugin_dir_url(__FILE__) . $filepath, [], null);
                             }
 
                         }

@@ -1,0 +1,113 @@
+#site-navigation {
+    display: block;
+    height: 100%;
+
+    .header-menu-container {
+        display: block;
+        height: 100%;
+    }
+
+    .header-menu-container > ul {
+        display: block;
+        height: 100%;
+    }
+
+    .multi-menu {
+        height: 100%;
+        display: block;
+
+        .menu-fullscreen-container-inner {
+            .menu-clickable {
+                font-size: 1rem;
+                line-height: 1.5;
+                background-color: transparent;
+
+                &:active,
+                &:hover,
+                &:focus {
+                    background-color: transparent;
+                }
+
+                @media (min-width: 600px) {
+                    padding: 0 !important;
+                }
+
+                &.depth-0 {
+                    @media (min-width: 600px) {
+                        font-size: 1.5rem !important;
+                        line-height: 1.25 !important;
+                    }
+                }
+            }
+
+            .menu-item {
+                border: 0;
+            }
+        }
+
+        &.light {
+            .menu-fullscreen-container-inner {
+                .menu-clickable {
+                    color: #282828;
+                    
+                    &:active,
+                    &:hover,
+                    &:focus {
+                        color: #282828;
+                    }
+                }
+            }
+        }
+    }
+
+    .menu-toggle-container {
+        height: 100%;
+        display: block;
+    }
+
+    .js-multi-menu-fullscreen-toggle-open {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        height: 100%;
+    }
+}
+
+/* 
+    The mobile header does this weird menu inside of a menu thing when the plugin is active. 
+    We're going to disable the mobile header so we can use the same menu for all screen sizes.
+*/
+
+@media (max-width: 1025px) {
+    #main-header {
+        display: block;
+    }
+
+    #mobile-header {
+        display: none;
+    }
+}
+
+/*
+    Make the site title and menu button play nice with each other when the word menu is showing.
+    Reduce the font size of the site title and give the menu toggle enough space.
+*/
+
+@media (max-width: 600px) {
+    #main-header {
+        .site-header-main-section-left {
+            .site-title-wrap {
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                .site-title {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .site-header-main-section-right {
+            width: 150px;
+        }
+    }
+}
