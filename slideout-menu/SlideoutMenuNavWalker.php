@@ -134,12 +134,16 @@ class SlideoutMenuNavWalker extends \Walker_Nav_Menu {
     function end_el(&$output, $item, $depth=0, $args=null) { 
         
         $is_first = ( $this->toplevel_item_index === 0 );
-        $is_last = ( $this->toplevel_item_index === ($this->toplevel_total_items - 1));
+        $is_last = ( $this->toplevel_item_index === $this->toplevel_total_items);
 
         $output .= "</li>";
 
         if($depth === 0 && $is_last) {
             $output .= "</ul></div></li>";
+        }
+
+        if($depth === 0) {
+            $this->toplevel_item_index++;
         }
     }
 

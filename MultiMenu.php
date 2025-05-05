@@ -273,20 +273,41 @@ class MultiMenu {
 
                         require_once(plugin_dir_path(__FILE__) . "/mega-menu/MegaMenuNavWalker.php");
 
-                        $args['walker'] = new MegaMenuNavWalker();
+                        $args['walker'] = new MegaMenuNavWalker($multimenu_menu_css, $menu_params);
 
                         // Load the appropriate CSS for this menu
 
                         if($multimenu_menu_css != "") {
 
                             // If there's a value, we're always loading the core styles
-                            wp_enqueue_style('multi-menu-mega-core', plugin_dir_url(__FILE__) . 'mega/css/mega-core.css', [], null);
+                            wp_enqueue_style('multi-menu-mega-core', plugin_dir_url(__FILE__) . 'mega-menu/css/mega-core.css', [], null);
 
                             if($multimenu_menu_css == "light") {
                                 wp_enqueue_style('multi-menu-mega-light', plugin_dir_url(__FILE__) . 'mega-menu/css/mega-light.css', [], null);
                             }
                             elseif($multimenu_menu_css == "dark") {
                                 wp_enqueue_style('multi-menu-mega-dark', plugin_dir_url(__FILE__) . 'mega-menu/css/mega-dark.css', [], null);
+                            }
+
+                        }
+
+                        if(boolval($multi_menu_load_theme_specific_css) === true && preg_match('/^[a-zA-Z0-9_-]+$/', $current_theme_name)) {
+
+                            // Check if we have any theme specific CSS to load
+                            
+                            /*
+                                Common popular theme names include:
+                                astra
+                                blocksy
+                                generatepress
+                                kadence
+                                neve
+                            */
+
+                            $filepath = 'mega-menu/css/theme-overrides/'. basename($current_theme_name) . '.css';
+
+                            if(file_exists(plugin_dir_path(__FILE__) . $filepath)) {
+                                wp_enqueue_style('multi-menu-overrides-' . $current_theme_name, plugin_dir_url(__FILE__) . $filepath, [], null);
                             }
 
                         }
