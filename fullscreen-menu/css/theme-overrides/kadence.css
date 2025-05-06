@@ -18,8 +18,8 @@
 
         .menu-fullscreen-container-inner {
             .menu-clickable {
-                font-size: 1rem;
-                line-height: 1.5;
+                font-size: 1.125rem;
+                line-height: 1.3;
                 background-color: transparent;
 
                 &:active,
@@ -93,7 +93,7 @@
     Reduce the font size of the site title and give the menu toggle enough space.
 */
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     #main-header {
         .site-header-main-section-left {
             .site-title-wrap {
@@ -108,6 +108,10 @@
 
         .site-header-main-section-right {
             width: 150px;
+        }
+
+        .custom-logo {
+            max-width: 100%;
         }
     }
 }

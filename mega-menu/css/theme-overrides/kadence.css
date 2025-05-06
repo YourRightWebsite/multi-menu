@@ -1,0 +1,124 @@
+/*
+    Make the site title and menu button play nice with each other when the word menu is showing.
+    Reduce the font size of the site title and give the menu toggle enough space.
+*/
+
+@media (max-width: 400px) {
+    #main-header {
+        .site-header-main-section-left {
+            .site-title-wrap {
+                margin-top: 5px;
+                margin-bottom: 5px;
+
+                .site-title {
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .site-header-main-section-right {
+            width: 150px;
+        }
+
+        .custom-logo {
+            max-width: 100%;
+        }
+    }
+}
+
+/* Fix some weird padding, spacing and hover behavior on desktop */
+
+@media (min-width: 400px) {
+    .header-menu-container ul {
+        margin: 0;
+    }
+
+    .menu-mega-container {
+        .menu-clickable {
+            padding: 0 !important;
+            padding-right: 26px !important;
+            width: auto !important;
+        }
+    }
+
+    .multi-menu-mega.light {
+        .menu-mega-container {
+            .menu-clickable {
+                background-color: transparent !important;
+                color: #282828 !important;
+            }
+        }
+    }
+
+    .multi-menu-mega.dark {
+        .menu-mega-container {
+            .menu-clickable {
+                background-color: transparent !important;
+                color: #fff !important;
+            }
+        }
+    }
+
+    .mega-menu-tray {
+        .menu-item {
+            .menu-clickable {
+                padding: 0 !important;
+
+                .menu-item-description {
+                    font-size: 0.875rem;
+                    line-height: 1.35;
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+/* 
+    The mobile header does this weird menu inside of a menu thing when the plugin is active. 
+    We're going to disable the mobile header so we can use the same menu for all screen sizes.
+*/
+
+@media (max-width: 1025px) {
+    #main-header {
+        display: block;
+
+        .header-menu-container > ul {
+            margin: 0;
+        }
+    }
+
+    #mobile-header {
+        display: none;
+    }
+
+    /* Additional fixes to override the default backgrounds of some elements */
+
+    .menu-clickable {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        background-color: transparent !important;
+
+        &:active,
+        &:hover,
+        &:focus {
+            background-color: transparent !important;
+        }
+    }
+
+    .menu-item {
+        border: 0 !important;
+    }
+
+    .multi-menu-mega.light {
+        .menu-clickable {
+            color: #282828 !important;
+        }
+    }
+
+    .multi-menu-mega.dark {
+        .menu-clickable {
+            color: #fff !important;
+        }
+    }
+}

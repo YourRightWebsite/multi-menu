@@ -82,7 +82,7 @@
     Reduce the font size of the site title and give the menu toggle enough space.
 */
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     #main-header {
         .site-header-main-section-left {
             .site-title-wrap {
@@ -97,6 +97,10 @@
 
         .site-header-main-section-right {
             width: 150px;
+        }
+
+        .custom-logo {
+            max-width: 100%;
         }
     }
 }
