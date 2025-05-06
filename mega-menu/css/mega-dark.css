@@ -4,8 +4,10 @@
     }
 
     .menu-mega-container {
-        background-color: #000000;
-        border-color: rgba(255, 255, 255, 0.2);
+        @media (max-width: 600px) {
+            background-color: #000000;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
     }
 
     .menu-item {
@@ -52,7 +54,7 @@
     }
 
     .mega-menu-tray.menu-open {
-        background-color: #fff;
+        background-color: #000;
     }
 
     .menu-item-description {

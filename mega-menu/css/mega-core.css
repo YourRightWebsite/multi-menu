@@ -78,12 +78,43 @@
                 &.menu-open {
                     display: block;
                     position: absolute;
-                    left: 0;
                     right: 0;
                     top: 25px;
                     padding: 30px;
                     padding-top: 35px;
-                    background-color: red !important;
+                    width: 100%;
+                    min-width: 800px;
+
+                    .submenu-outer-wrapper.depth-1 {
+                        display: none;
+                    }
+
+                    .submenu-inner-wrapper {
+                        .submenu-list {
+                            display: grid;
+                            grid-template-columns: repeat(3, 1fr);
+                            gap: 30px; /* 30px spacing between rows and columns */
+
+                            .menu-item {
+                                display: block;
+
+                                .menu-item-description {
+                                    font-weight: normal;
+                                    margin-top: .75rem;
+                                }
+
+                                .featured-image-wrapper {
+                                    margin-bottom: 15px;
+                                }
+
+                                .item-title {
+                                    font-size: 1.125rem;
+                                    line-height: 1.25;
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }        
@@ -274,6 +305,44 @@
                     .menu-item-description {
                         display: none;
                     }
+
+                    .featured-image-wrapper {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Class modifiers for specific menu behavior on desktop sizes */
+
+    &.no-featured-images {
+        @media (min-width: 600px) {
+            .mega-menu-tray.menu-open {
+                .submenu-inner-wrapper .submenu-list .menu-item {
+                    .featured-image-wrapper {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &.four-columns {
+        @media (min-width: 600px) {
+            .mega-menu-tray.menu-open {
+                .submenu-inner-wrapper .submenu-list {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+
+    &.two-columns {
+        @media (min-width: 600px) {
+            .mega-menu-tray.menu-open {
+                .submenu-inner-wrapper .submenu-list {
+                    grid-template-columns: repeat(2, 1fr);
                 }
             }
         }

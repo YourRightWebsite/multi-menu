@@ -109,8 +109,23 @@ class MegaMenuNavWalker extends \Walker_Nav_Menu {
 		} else {
 			$output .= '<button class="menu-clickable js-menu-clickable-toggle is-button depth-'. $depth . ' ' . ($args->walker->has_children ? 'has-children' : 'no-children') . '"><span>';
 		}
+
+        if($depth === 1) {
+
+            if(isset($item->object_id) && is_numeric($item->object_id)) {
+                $featured_image = get_the_post_thumbnail_url($item->object_id, "large");
+
+                if($featured_image !== false && $featured_image != "") {
+                    $output .= '
+                        <div class="featured-image-wrapper">
+                            <img src="'.$featured_image.'" alt="" class="mm-featured-image" />
+                        </div>
+                    ';
+                }
+            }
+        }
  
-		$output .= $item->title;
+		$output .= '<span class="item-title">'.$item->title.'</span>';
 
         if($args->walker->has_children) {
             // Output the arrow toggle
@@ -123,12 +138,6 @@ class MegaMenuNavWalker extends \Walker_Nav_Menu {
                 </span>
             ';
         }
- 
-		if ($item->url && $item->url != '#') {
-			$output .= '</span></a>';
-		} else {
-			$output .= '</span></button>';
-		}
 
         if($depth === 1) {
 
@@ -138,6 +147,12 @@ class MegaMenuNavWalker extends \Walker_Nav_Menu {
                 $output .= '<div class="menu-item-description">'. $description .'</div>';
             }
         }
+ 
+		if ($item->url && $item->url != '#') {
+			$output .= '</span></a>';
+		} else {
+			$output .= '</span></button>';
+		}
     }
 
     function end_el(&$output, $item, $depth=0, $args=null) { 
@@ -147,16 +162,12 @@ class MegaMenuNavWalker extends \Walker_Nav_Menu {
 
         $output .= "</li>";
 
-        $output .= "<!-- " . $this->toplevel_item_index . " : ". $this->toplevel_total_items ." -->";
-
         if($depth === 0 && $is_last) {
-
-            $output .= "<!-- LAST COMMENT -->";
 
             $output .= "
             <li class='mega-menu-tray'>
                 <div class='js-mega-menu-tray-inner mega-menu-tray-inner'>
-                    <p>Javascript Content Goes Here</p>
+                    <!-- Menu contents from Javascript goes here -->
                 </div> 
             </li>
             ";

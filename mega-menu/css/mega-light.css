@@ -4,8 +4,10 @@
     }
 
     .menu-mega-container {
-        background-color: #fff;
-        border-color: #f2f2f2;
+        @media (max-width: 600px) {
+            background-color: #fff;
+            border-color: #f2f2f2;
+        }
     }
 
     .menu-item {

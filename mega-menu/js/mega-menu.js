@@ -75,7 +75,7 @@ jQuery(document).ready(function($) {
     // Function to close the mega menu
     function closeMegaMenu() {
         if (!isButtonOpen) {
-            $megaMenuTrayInner.empty();
+            // $megaMenuTrayInner.empty();
             $megaMenuTray.removeClass('menu-open');
         }
     }
