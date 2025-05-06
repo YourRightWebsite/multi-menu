@@ -1,0 +1,9 @@
+# Theme Compatibility Notes
+
+## [Astra](https://wordpress.org/themes/astra/)
+
+All menus are confirmed to work with a fresh installation of the Astra theme.  Astra has separate menus for desktop and mobile which is not something Multi Menu accounts for.  If you are using Astra, we recommend using the plugin for your desktop menu and then using the built in menu provided by Astra for your mobile menu.
+
+## [Blocksy](https://wordpress.org/themes/blocksy/)
+
+All menus appear to work well on desktop, but Blocksy hides the mobile menu behind its own menu toggle.  This results in a double menu, where the user has to click the Blocksy menu toggle, then the Multi Menu menu toggle to open the menu.  This is corrected for in the theme specific blocksy.css files for each of the various menus.

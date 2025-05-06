@@ -1,0 +1,28 @@
+.multi-menu {
+    @media (min-width: 600px) {
+        .mega-menu-tray {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            padding-bottom: 0 !important;
+            padding-top: 30px !important;
+            margin: 0 !important;
+            
+            .mega-menu-tray-outer {
+                padding: 30px !important;
+                margin: 0 !important;
+                border-left: 1px solid var( --ast-global-color-subtle-background,--ast-global-color-7 );
+                border-right: 1px solid var( --ast-global-color-subtle-background,--ast-global-color-7 );
+                border-bottom: 1px solid var( --ast-global-color-subtle-background,--ast-global-color-7 );
+
+                .mega-menu-tray-inner {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+            }
+
+            &.menu-open {
+                background-color: var( --ast-global-color-primary,--ast-global-color-4 ) !important;
+            }
+        }
+    }
+}

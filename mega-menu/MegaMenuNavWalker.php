@@ -166,8 +166,10 @@ class MegaMenuNavWalker extends \Walker_Nav_Menu {
 
             $output .= "
             <li class='mega-menu-tray'>
-                <div class='js-mega-menu-tray-inner mega-menu-tray-inner'>
-                    <!-- Menu contents from Javascript goes here -->
+                <div class='mega-menu-tray-outer'>
+                    <div class='js-mega-menu-tray-inner mega-menu-tray-inner'>
+                        <!-- Menu contents from Javascript goes here -->
+                    </div>
                 </div> 
             </li>
             ";

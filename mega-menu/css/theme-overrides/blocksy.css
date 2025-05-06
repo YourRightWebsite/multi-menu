@@ -1,0 +1,27 @@
+header {
+    div[data-device="desktop"] {
+        display: block !important;
+    }
+
+    div[data-device="mobile"] {
+        display: none !important;
+    }
+
+    @media (max-width: 600px) {
+        .ct-header-search {
+            display: none;
+        }
+
+        .site-title {
+            font-size: 1.125rem;
+        }
+
+        .site-branding {
+            max-width: 100%;
+        }
+
+        .site-logo-container img {
+            max-width: 100%;
+        }
+    }
+}
