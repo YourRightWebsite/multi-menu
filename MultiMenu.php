@@ -390,4 +390,8 @@ class MultiMenu {
 // Initialize the plugin
 $multi_menu = new MultiMenu();
 
+if(file_exists(plugin_dir_path(__FILE__) . "/updater/MultiMenuUpdater.php")) {
+    require_once(plugin_dir_path(__FILE__) . "/updater/MultiMenuUpdater.php");
+}
+
 
