@@ -78,4 +78,20 @@
         background-color: #f2fff4;
         padding: 15px;
     }
+
+    .plugin-advertisement {
+        border: 1px solid #dcdcde;
+        margin-top: 30px;
+        padding: 10px;
+
+        .header {
+            font-size: 0.85rem;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 0;
+        }
+    }
 }

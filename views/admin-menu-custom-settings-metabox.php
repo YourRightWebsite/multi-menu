@@ -76,4 +76,14 @@
         </button>
     </div>
 
+    <div class="plugin-advertisement">
+        <h5 class="header">Need some help using this plugin?</h5>
+        <p>
+            The <a href="https://yourrightwebsite.com/multi-menu-documentation/?source=multi-menu" target="_blank">plugin documentation</a> contains helpful information on how to use and customize the Multi Menu plugin.
+        </p>
+        <p>
+            <a href="https://yourrightwebsite.com/?source=multimenu" target="_blank">Your Right Website</a> also offers <a href="https://yourrightwebsite.com/website-consulting/?source=multi-menu" target="_blank">website consulting services</a>, <a href="https://yourrightwebsite.com/custom-wordpress-plugin-development/?source=multi-menu" target="_blank">custom WordPress plugin development</a> and <a href="https://yourrightwebsite.com/website-design-and-development/?source=multi-menu" target="_blank">custom WordPress web design</a> to help you get the website that's right for you!
+        </p>
+    </div>
+
 </div>
