@@ -11,3 +11,7 @@ All menus appear to work well on desktop, but Blocksy hides the mobile menu behi
 ## [Kadence](https://wordpress.org/themes/kadence/)
 
 All menus work with Kadence when the theme specific overrides CSS is enabled.  Kadence took quite a bit of customizing to get the various menus looking good on a default install of the theme, but everything is now confirmed to be working with the CSS overrides.
+
+## [Neve] (https://wordpress.org/themes/neve/)
+
+All menus work with Neve.  Enhancements for Neve are enabled when the theme specific CSS is loaded.
