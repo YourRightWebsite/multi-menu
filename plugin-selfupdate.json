@@ -4,18 +4,18 @@
 	"author" : "<a href='https://yourrightwebsite.com/?source=multimenu'>Your Right Website</a>",
 	"author_profile" : "https://github.com/YourRightWebsite/",
 	"donate_link" : "https://yourrightwebsite.com/?source=multimenu",
-	"version" : "1.0.2",
-	"download_url" : "https://github.com/YourRightWebsite/multi-menu/releases/download/v1.0.2/multi-menu.zip",
+	"version" : "1.0.3",
+	"download_url" : "https://github.com/YourRightWebsite/multi-menu/releases/download/v1.0.3/multi-menu.zip",
 	"requires" : "6.7.2",
-	"tested" : "6.7.2",
-	"requires_php" : "8.3",
+	"tested" : "6.8.1",
+	"requires_php" : "8.2",
 	"added" : "2025-05-06 00:00:00",
-	"last_updated" : "2025-05-06 00:00:00",
+	"last_updated" : "2025-05-08 16:00:00",
 	"homepage" : "https://yourrightwebsite.com/?source=multimenu",
 	"sections" : {
 		"description" : "Easily enable different styles of menu for your website, including a mega menu, slideout menu and fullscreen menu.",
 		"installation" : "Click the activate button to activate the plugin, then go to Appearance > Menus and edit settings inside of the <em>Multi Menu</em> section on the left to configure your menu.",
-		"changelog" : "<h4>Initial Release</h4>"
+		"changelog" : "<h4>Version 1.0.3</h4><ul><li>Bugfix for slideout menu being hidden behind other elements.</li><li>Tested with older PHP versions and newer WordPress versions.</li></ul>"
 	},
 	"banners" : {
 		"low" : "https://yourrightwebsite.com/app/uploads/2025/05/multi-menu-772x250-1.png",

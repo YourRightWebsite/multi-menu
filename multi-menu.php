@@ -5,7 +5,7 @@ namespace MultiMenu;
 /*
 Plugin Name: Multi Menu
 Description: This is a plugin that allows you to easily replace your theme's default menu with a mega menu, fullscreen menu or slideout menu.
-Version: 1.0.2
+Version: 1.0.3
 Author: Your Right Website
 Author URI: https://www.yourrightwebsite.com
 */

@@ -1,7 +1,7 @@
 # Multi Menu Plugin for WordPress
 This plugin allows you to easily enable three new types of menu for your WordPress website: Mega Menu, Fullscreen Menu and Slideout Menu.
 
-*Plugin Version v1.0.2*
+*Plugin Version v1.0.3*
 
 ## Plugin Installation
 
