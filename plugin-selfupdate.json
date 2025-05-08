@@ -4,7 +4,7 @@
 	"author" : "<a href='https://yourrightwebsite.com/?source=multimenu'>Your Right Website</a>",
 	"author_profile" : "https://github.com/YourRightWebsite/",
 	"donate_link" : "https://yourrightwebsite.com/?source=multimenu",
-	"version" : "1.0",
+	"version" : "1.0.1",
 	"download_url" : "https://github.com/YourRightWebsite/multi-menu/releases/download/v1.0.1/multi-menu.zip",
 	"requires" : "6.7.2",
 	"tested" : "6.7.2",
