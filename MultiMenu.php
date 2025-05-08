@@ -4,8 +4,8 @@ namespace MultiMenu;
 
 /*
 Plugin Name: Multi Menu
-Description: This is a plugin that allows for many different types of navigation menus.
-Version: 1.0.0
+Description: This is a plugin that allows you to easily replace your theme's default menu with a mega menu, fullscreen menu or slideout menu.
+Version: 1.0.1
 Author: Your Right Website
 Author URI: https://www.yourrightwebsite.com
 */
